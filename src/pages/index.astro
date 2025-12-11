@@ -21,7 +21,7 @@ const siteName = getSiteName();
 const keyword = getKeyword();
 const domain = getDomain();
 const siteURL = getSiteURL();
-const keywordId = getKeywordId();
+const keywordId = getKeywordId() || 'free-government-phone'; // Fallback to default
 
 // Get content variations for this domain (legacy hero/CTA variations)
 const content = getContentVariations(domain);
@@ -31,9 +31,11 @@ let h1Content = { h1: `Get Your Free ${keyword} Today` };
 let metaContent = { title: `${siteName} - ${keyword}`, description: `Apply for your ${keyword.toLowerCase()} through ${siteName}.` };
 
 try {
-  const { getH1Variation, getH2Variation, getMetaVariations } = await loadKeywordVariations(keywordId);
-  h1Content = getH1Variation(domain, 'home');
-  metaContent = getMetaVariations(siteName, domain, 'home');
+  if (keywordId) {
+    const { getH1Variation, getH2Variation, getMetaVariations } = await loadKeywordVariations(keywordId);
+    h1Content = getH1Variation(domain, 'home');
+    metaContent = getMetaVariations(siteName, domain, 'home');
+  }
 } catch (e) {
   console.error('Failed to load keyword variations for homepage:', e);
   // Will use fallback values above
