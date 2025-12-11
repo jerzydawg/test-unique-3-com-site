@@ -1,0 +1,150 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { getSiteName, getKeyword, getDomain, getSiteURL } from '../lib/site-config';
+
+const siteName = getSiteName();
+const keyword = getKeyword();
+const domain = getDomain();
+const siteURL = getSiteURL();
+
+const title = `${keyword} - Apply in 2 Minutes | ${siteName}`;
+const description = `Get your free government phone today! Apply in just 2 minutes with Test Unique Site 3. Check eligibility, submit application, and get approved fast. No credit check required.`;
+const canonicalURL = `${siteURL}/apply`;
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": title,
+  "description": description,
+  "author": {
+    "@type": "Organization",
+    "name": siteName
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": siteName,
+    "url": siteURL
+  },
+  "datePublished": "2025-12-11",
+  "dateModified": "2025-12-11",
+  "url": canonicalURL,
+  "mainEntityOfPage": canonicalURL
+};
+
+const faqJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "How long does the free government phone application take?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The application process takes just 2 minutes to complete online. Most applicants receive approval within 24-48 hours."
+      }
+    },
+    {
+      "@type": "Question", 
+      "name": "What documents do I need to apply?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "You'll need proof of income or participation in qualifying programs like SNAP, Medicaid, or SSI. A government ID is also required."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is there a credit check for the free phone program?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No credit check is required. Approval is based on income or program participation, not your credit score."
+      }
+    }
+  ]
+};
+---
+
+<Layout title={title} description={description} canonical={canonicalURL}>
+  <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+  <script type="application/ld+json" set:html={JSON.stringify(faqJsonLd)} />
+  
+  <main class="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 py-8">
+    <div class="container mx-auto px-4 max-w-4xl">
+      
+      <!-- Breadcrumb Navigation -->
+      <nav aria-label="Breadcrumb" class="mb-8">
+        <ol class="flex items-center space-x-2 text-sm text-gray-600">
+          <li><a href="/" class="text-[var(--color-primary)] hover:underline">Home</a></li>
+          <li class="flex items-center">
+            <svg class="w-4 h-4 mx-2" fill="currentColor" viewBox="0 0 20 20">
+              <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"></path>
+            </svg>
+            <span class="text-gray-800 font-medium">Apply Now</span>
+          </li>
+        </ol>
+      </nav>
+
+      <!-- Header Section -->
+      <div class="text-center mb-12">
+        <h1 class="text-4xl md:text-5xl font-bold text-gray-900 mb-4">Free Government Phone</h1>
+        <p class="text-xl text-gray-700 max-w-2xl mx-auto">Apply in just 2 minutes and get your phone within days. No upfront costs, no credit checks, no hassles.</p>
+      </div>
+
+      <!-- Intro Section -->
+      <section id="intro" class="mb-12 bg-white rounded-2xl shadow-lg p-8">
+        <div class="grid md:grid-cols-2 gap-8 items-center">
+          <div>
+            <h2 class="text-3xl font-bold text-gray-900 mb-4">Get Connected Today</h2>
+            <p class="text-gray-700 mb-6">
+              Your Free Government Phone application starts here at Test Unique Site 3. Millions of Americans already receive free wireless service through the Lifeline program. This essential service helps families stay connected to work, healthcare, and emergency services without worrying about monthly bills.
+            </p>
+            <p class="text-gray-700 mb-6">
+              The application process is quick and straightforward. You'll receive a smartphone with free monthly minutes, unlimited texts, and high-speed data. No contracts, no deposits, and no surprise fees.
+            </p>
+            <button class="bg-gradient-to-r from-yellow-400 to-orange-500 hover:from-yellow-500 hover:to-orange-600 text-gray-900 font-bold py-3 px-6 rounded-xl shadow-lg">
+              Start Your Application
+            </button>
+          </div>
+          <div class="text-center">
+            <div class="bg-gradient-to-r from-green-400 to-blue-500 rounded-2xl p-6 text-white">
+              <div class="text-4xl font-bold mb-2">2 MIN</div>
+              <div class="text-lg">Application Time</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Eligibility Checker -->
+      <section id="eligibility-checker" class="mb-12 bg-white rounded-2xl shadow-lg p-8">
+        <h2 class="text-3xl font-bold text-gray-900 mb-6 text-center">Quick Eligibility Check</h2>
+        <p class="text-gray-700 mb-8 text-center">See if you qualify for a Free Government Phone in seconds</p>
+        
+        <div class="grid md:grid-cols-2 gap-8">
+          <div>
+            <h3 class="text-xl font-semibold mb-4" style="color: var(--color-primary)">Income-Based Eligibility</h3>
+            <ul class="space-y-3 text-gray-700">
+              <li class="flex items-center">
+                <svg class="w-5 h-5 mr-3 text-green-500" fill="currentColor" viewBox="0 0 20 20">
+                  <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                </svg>
+                Household income at or below 135% of Federal Poverty Guidelines
+              </li>
+              <li class="flex items-center">
+                <svg class="w-5 h-5 mr-3 text-green-500" fill="currentColor" viewBox="0 0 20 20">
+                  <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                </svg>
+                Valid proof of income required
+              </li>
+            </ul>
+          </div>
+          <div>
+            <h3 class="text-xl font-semibold mb-4" style="color: var(--color-primary)">Program-Based Eligibility</h3>
+            <ul class="space-y-3 text-gray-700">
+              <li class="flex items-center">
+                <svg class="w-5 h-5 mr-3 text-green-500" fill="currentColor" viewBox="0 0 20 20">
+                  <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                </svg>
+                SNAP (Food Stamps)
+              </li>
+              <li class="flex items-center">
+                <svg class="w-5 h-5 mr-3 text-green-500" fill="currentColor" viewBox="0 0 20 20">
+                  <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1
